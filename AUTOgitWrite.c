@@ -4,6 +4,7 @@
 #include<windows.h>
 #include<unistd.h>
 
+//ファイル書き込み用構造体
 typedef struct{
     char path[300];
     char name[300];
@@ -12,9 +13,12 @@ typedef struct{
 }data;
 
 int main(void){
+    //構造体宣言
     data data1;
+    //for()用
     int i;
 
+    //配列の初期化
     for(i=0;i<(sizeof(data1.path)/sizeof(data1.path[0]));i++){
     data1.path[i]=0;
     }
@@ -28,6 +32,7 @@ int main(void){
     data1.URL[i]=0;
     }
     
+    //入力
     printf("path?\n");
     gets(data1.path);
     printf("name?\n");
@@ -37,7 +42,7 @@ int main(void){
     printf("URL?\n");
     gets(data1.URL);
 
-    
+    //ファイル書き込み
     FILE *fp=fopen("data.dat","wb");
     if(fp==NULL){
         printf("ERROR");
